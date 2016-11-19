@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ERP Guide</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
