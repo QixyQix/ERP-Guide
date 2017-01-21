@@ -36,13 +36,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         spec.setIndicator("TopUp Locations");
         host.addTab(spec);
 
-        initializeMap();
+        initializeMap(R.id.fragmentMapERPLocation);
+        initializeMap(R.id.fragmentMapTopUpLocation);
     }
 
     //Reference for the initialize map code
     //https://www.youtube.com/watch?v=lchyOhPREh4
-    private void initializeMap() {
-        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.fragmentMapERPLocation);
+    private void initializeMap(int id) {
+        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(id);
         mapFragment.getMapAsync(this);
     }
 
@@ -50,24 +51,30 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         //Set up ERP Location Map
         this.erpLocationMap = googleMap;
+        this.topUpLocationMap = googleMap;
         //Zoom to marina bay area aka downtown area aka where most of the ERPs are at
-        zoomToLocation(1.287268, 103.855933,12);
+        zoomToLocation(1.287268, 103.855933,12,erpLocationMap);
+        zoomToLocation(1.287268, 103.855933,12,topUpLocationMap);
 
-        MarkerOptions marker = new MarkerOptions()
-                .title("Fullerton Road Eastbound at Fullerton (63)")
-                .position(new LatLng(1.286033, 103.853490));
-        googleMap.addMarker(marker);
-
-        MarkerOptions marker2 = new MarkerOptions()
-                .title("Fullerton Road Westbound at One Fullerton (64)")
-                .position(new LatLng(1.286091, 103.853961));
-        googleMap.addMarker(marker2);
+        populateMarkers();
     }
 
-    public void zoomToLocation(double lat, double lng, float zoom){
+    public void zoomToLocation(double lat, double lng, float zoom, GoogleMap map){
         LatLng latLng = new LatLng(lat,lng);
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng,zoom);
-        erpLocationMap.moveCamera(cameraUpdate);
+        map.moveCamera(cameraUpdate);
 
+    }
+
+    public void populateMarkers(){
+        MarkerOptions marker = new MarkerOptions()
+                .title("Fullerton Road Eastbound at Fullerton (63) ERP LOCATION")
+                .position(new LatLng(1.286033, 103.853490));
+        erpLocationMap.addMarker(marker);
+
+        MarkerOptions marker2 = new MarkerOptions()
+                .title("Fullerton Road Westbound at One Fullerton (64) TOP UP LOCATION")
+                .position(new LatLng(1.286091, 103.853961));
+        topUpLocationMap.addMarker(marker2);
     }
 }
