@@ -1,25 +1,27 @@
 package qixyqix.com.erpguide;
 
 /**
- * Created by QiXiang on 19/11/2016.
+ * Created by QiXiang on 26/01/2017.
  */
 
-public class ERPGantry {
+public class TopUpLocation {
     private int ID;
     private String title;
+    private String description;
+    private String address;
     private double lat;
     private double lng;
-    private String zone;
 
-    public ERPGantry() {
+    public TopUpLocation() {
     }
 
-    public ERPGantry(int ID, String title, double lat, double lng, String zone) {
+    public TopUpLocation(int ID, String title, String description, String address, double lat, double lng) {
         this.ID = ID;
         this.title = title;
+        this.description = description;
+        this.address = address;
         this.lat = lat;
         this.lng = lng;
-        this.zone = zone;
     }
 
     public int getID() {
@@ -38,6 +40,22 @@ public class ERPGantry {
         this.title = title;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public double getLat() {
         return lat;
     }
@@ -52,13 +70,5 @@ public class ERPGantry {
 
     public void setLng(double lng) {
         this.lng = lng;
-    }
-
-    public String getZone() {
-        return zone;
-    }
-
-    public void setZone(String zone) {
-        this.zone = zone;
     }
 }
