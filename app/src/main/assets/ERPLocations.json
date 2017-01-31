@@ -1,0 +1,191 @@
+[
+    {
+      "Title": "Upper Bt Timah Rd Southbound after Hume Ave",
+      "ERPID": 55,
+      "Lat": 1.353151,
+      "Lng": 103.769718,
+      "ZoneID": "AYC"
+    },
+    {
+      "Title": "Bt Timah Expressway (Sb betw Dairy Farm Rd & PIE)",
+      "ERPID": 54,
+      "Lat": 1.353534,
+      "Lng": 103.787835,
+      "ZoneID": "AYC"
+    },
+    {
+      "Title": "Citybound AYE After Jurong Town Hall",
+      "ERPID": 74,
+      "Lat": 1.316403,
+      "Lng": 103.758694,
+      "ZoneID": "AYC"
+    },
+    {
+      "Title": "Clementi Avenue 6 into AYE (City)",
+      "ERPID": 52,
+      "Lat": 1.31511,
+      "Lng": 103.760858,
+      "ZoneID": "AYC"
+    },
+    {
+      "Title": "Clementi Avenue 2 into AYE (City)",
+      "ERPID": 53,
+      "Lat": 1.30888,
+      "Lng": 103.76643,
+      "ZoneID": "AYC"
+    },
+    {
+      "Title": "Tuasbound AYE After North Buona Vista",
+      "ERPID": 41,
+      "Lat": 1.301059,
+      "Lng": 103.77671,
+      "ZoneID": "AY1"
+    },
+    {
+      "Title": "AYE to City before Alexandra Road",
+      "ERPID": 36,
+      "Lat": 1.28684,
+      "Lng": 103.79674,
+      "ZoneID": "AYC"
+    },
+    {
+      "Title": "PIE westbound before Eunos Link",
+      "ERPID": 65,
+      "Lat": 1.32857,
+      "Lng": 103.91161,
+      "ZoneID": "AY1"
+    },
+    {
+      "Title": "PIE to Changi after Adam Road Exit",
+      "ERPID": 37,
+      "Lat": 1.33068,
+      "Lng": 103.81989,
+      "ZoneID": "AYC"
+    },
+    {
+      "Title": "Thomson Road after Toa Payoh Rise",
+      "ERPID": 39,
+      "Lat": 1.336343,
+      "Lng": 103.837224,
+      "ZoneID": "AYC"
+    },
+    {
+      "Title": "CTE before Braddell Road",
+      "ERPID": 35,
+      "Lat": 1.346659,
+      "Lng": 103.859374,
+      "ZoneID": "AYC"
+    },
+    {
+      "Title": "Toa Payoh Lorong 6",
+      "ERPID": 56,
+      "Lat": 1.340835,
+      "Lng": 103.853331,
+      "ZoneID": "AYC"
+    },
+    {
+      "Title": "Dunearn Road / Wayang Satu Flyover",
+      "ERPID": 43,
+      "Lat": 1.321598,
+      "Lng": 103.823599,
+      "ZoneID": "AYC"
+    },
+    {
+      "Title": "Dunearn Road / Whitley Road ",
+      "ERPID": 44,
+      "Lat": 1.321168,
+      "Lng": 103.825198,
+      "ZoneID": "AY1"
+    },
+    {
+      "Title": "PIE to CTE Northbound before Braddell Road",
+      "ERPID": 67,
+      "Lat": 1.333106,
+      "Lng": 103.861808,
+      "ZoneID": "AY1"
+    },
+    {
+      "Title": "CTE Northbound after PIE",
+      "ERPID": 46,
+      "Lat": 1.332721,
+      "Lng": 103.862179,
+      "ZoneID": "AY1"
+    },
+    {
+      "Title": "CTE after Braddell Road ",
+      "ERPID": 31,
+      "Lat": 1.333419,
+      "Lng": 103.862352,
+      "ZoneID": "AYC"
+    },
+    {
+      "Title": "CTE Slip Road to PIE (Changi) / Serangoon Road",
+      "ERPID": 68,
+      "Lat": 1.333461,
+      "Lng": 103.862505,
+      "ZoneID": "AYC"
+    },
+    {
+      "Title": "PIE to Changi / Whitley Road ",
+      "ERPID": 38,
+      "Lat": 1.327606,
+      "Lng": 103.828319,
+      "ZoneID": "AYC"
+    },
+    {
+      "Title": "CTE from Balestier Road ",
+      "ERPID": 34,
+      "Lat": 1.318355,
+      "Lng": 103.851632,
+      "ZoneID": "AYC"
+    },
+    {
+      "Title": "CTE Northbound before exit to PIE ",
+      "ERPID": 51,
+      "Lat": 1.32604,
+      "Lng": 103.860473,
+      "ZoneID": "AY1"
+    },
+    {
+      "Title": "PIE into CTE ",
+      "ERPID": 42,
+      "Lat": 1.329022,
+      "Lng": 103.864583,
+      "ZoneID": "AY1"
+    },
+    {
+      "Title": "CTE from Serangoon Road",
+      "ERPID": 33,
+      "Lat": 1.329095,
+      "Lng": 103.864586,
+      "ZoneID": "AY1"
+    },
+    {
+      "Title": "Bendemeer Road ",
+      "ERPID": 40,
+      "Lat": 1.327269,
+      "Lng": 103.868473,
+      "ZoneID": "AYC"
+    },
+    {
+      "Title": "Woodsville Tunnel ",
+      "ERPID": 71,
+      "Lat": 1.325924,
+      "Lng": 103.868083,
+      "ZoneID": "AYC"
+    },
+    {
+      "Title": "PIE slip road to Bendemeer Road ",
+      "ERPID": 45,
+      "Lat": 1.326168,
+      "Lng": 103.870437,
+      "ZoneID": "AY1"
+    },
+    {
+      "Title": "PIE after Kallang Bahru on Woodsville Flyover ",
+      "ERPID": 32,
+      "Lat": 1.32628,
+      "Lng": 103.87056,
+      "ZoneID": "AY1"
+    }
+  ]

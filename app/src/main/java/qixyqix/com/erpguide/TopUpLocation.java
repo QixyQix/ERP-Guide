@@ -1,10 +1,12 @@
 package qixyqix.com.erpguide;
 
+import java.io.Serializable;
+
 /**
  * Created by QiXiang on 26/01/2017.
  */
 
-public class TopUpLocation {
+public class TopUpLocation implements Serializable{
     private int ID;
     private String title;
     private String description;

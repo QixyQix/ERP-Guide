@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_favourites"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="qixyqix.com.erpguide.Favourites">
+
+    <TabHost
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/tabFavourites">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/tabERPFav"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ListView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/listERPFav" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tabTopUpFav"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ListView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/listTopUpFav" />
+                </LinearLayout>
+
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        >
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            app:srcCompat="@android:drawable/ic_dialog_map"
+            android:id="@+id/imageButton3"
+            android:layout_weight="1"
+            android:background="@color/colorPrimaryDark" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            app:srcCompat="@android:drawable/btn_star"
+            android:id="@+id/imageButton4"
+            android:layout_weight="1"
+            android:background="@color/colorPrimaryDark" />
+
+    </LinearLayout>
+
+</RelativeLayout>

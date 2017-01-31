@@ -1,10 +1,12 @@
 package qixyqix.com.erpguide;
 
+import java.io.Serializable;
+
 /**
  * Created by QiXiang on 19/11/2016.
  */
 
-public class ERPGantry {
+public class ERPGantry implements Serializable{
     private int ID;
     private String title;
     private double lat;

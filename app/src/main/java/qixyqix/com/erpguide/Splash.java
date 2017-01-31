@@ -1,19 +1,15 @@
 package qixyqix.com.erpguide;
 
 import android.content.Intent;
-import android.content.res.Resources;
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.Toast;
-
-import java.util.concurrent.TimeUnit;
 
 public class Splash extends AppCompatActivity {
+    private Data dataObj;
+    private DataBundle dataBundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +27,8 @@ public class Splash extends AppCompatActivity {
             public void run() {
                 super.run();
                 try {
+                    dataObj = new Data(Splash.this.getApplicationContext());
+                    dataBundle = dataObj.getDataBundle();
                     sleep(2500); //Sleep for 2.5seconds
                     runOnUiThread(new Runnable() {
                         @Override
@@ -59,8 +57,12 @@ public class Splash extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }finally{
+                    //Create bundle to pass the data over
+                    Bundle b = new Bundle();
+                    b.putSerializable("data",dataBundle);
                     //Create new intent for main activity
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    intent.putExtras(b);
                     //Start the activity
                     startActivity(intent);
                     //close this activity (So user cannot go back)

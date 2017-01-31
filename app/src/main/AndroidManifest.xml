@@ -29,12 +29,18 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".Splash" android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity
+            android:name=".Splash"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ERPDetail" />
+        <activity android:name=".TopUpDetail" />
+        <activity android:name=".Favourites"></activity>
     </application>
 
 </manifest>
