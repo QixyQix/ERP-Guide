@@ -1,6 +1,10 @@
 package qixyqix.com.erpguide;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by QiXiang on 26/01/2017.
@@ -36,6 +40,32 @@ public class Pricing implements Serializable{
         this.zoneID = zoneID;
         this.chargeAmount = chargeAmount;
         this.effectiveDate = effectiveDate;
+    }
+
+    public boolean inOperation(){
+        try {
+            Date timeStart = new SimpleDateFormat("HH:mm").parse(startTime);
+            Calendar calendarStart = Calendar.getInstance();
+            calendarStart.setTime(timeStart);
+
+            Date timeEnd = new SimpleDateFormat("HH:mm").parse(endTime);
+            Calendar calendarEnd = Calendar.getInstance();
+            calendarEnd.setTime(timeEnd);
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+            Calendar calendarNow = Calendar.getInstance();
+            String currentTimeString = dateFormat.format(calendarNow.getTime());
+            calendarNow.setTime(new SimpleDateFormat("HH:mm").parse(currentTimeString));
+            Date currentTime = calendarNow.getTime();
+
+
+            if(currentTime.after(calendarStart.getTime())&&currentTime.before(calendarEnd.getTime())){
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public String getVehicleType() {

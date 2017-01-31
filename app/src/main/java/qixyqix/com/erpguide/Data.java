@@ -71,14 +71,15 @@ public class Data {
 
         if(null!=pricings){
             for(Pricing pricing : pricings){
-                if(db.updatePricing(pricing) == 0){
-                    db.insertPrice(pricing);
+                if(pricing.getChargeAmount() != 0.0) {
+                    if (db.updatePricing(pricing) == 0) {
+                        db.insertPrice(pricing);
+                    }
                 }
             }
         }
 
-        this.pricings = db.getAllPricings("Motorcycle");
-
+        this.pricings = db.getAllPricings();
     }
 
     public ArrayList<Pricing> GetDatamallData(){

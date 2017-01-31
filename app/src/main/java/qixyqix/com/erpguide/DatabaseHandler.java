@@ -101,10 +101,35 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 
 
     //Methods to GET
-    public ArrayList<Pricing> getAllPricings(String vehicleClass){
+    public ArrayList<Pricing> getAllPricings(){
         ArrayList<Pricing> pricingList = new ArrayList<Pricing>();
 
-        String selectString = "SELECT * FROM "+TABLE_ERPRATES+" WHERE "+KEY_VEHICLE_TYPE+" LIKE '"+vehicleClass+"'";
+        String selectString = "SELECT * FROM "+TABLE_ERPRATES;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(selectString,null);
+
+        if(cursor.moveToFirst()){
+            do{
+                Pricing pricing = new Pricing();
+                pricing.setVehicleType(cursor.getString(1));
+                pricing.setDayType(cursor.getString(2));
+                pricing.setStartTime(cursor.getString(3));
+                pricing.setEndTime(cursor.getString(4));
+                pricing.setZoneID(cursor.getString(5));
+                pricing.setChargeAmount(Double.parseDouble(cursor.getString(6)));
+
+                pricingList.add(pricing);
+            }while(cursor.moveToNext());
+        }
+        return pricingList;
+    }
+
+    public ArrayList<Pricing> getAllPricingsOfZone(String zoneID){
+        ArrayList<Pricing> pricingList = new ArrayList<Pricing>();
+
+        String selectString = "SELECT * FROM "+TABLE_ERPRATES+" WHERE "+KEY_ZONE_ID+" LIKE '"+zoneID+"'";
 
         SQLiteDatabase db = this.getReadableDatabase();
 

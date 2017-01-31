@@ -14,6 +14,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -122,18 +123,32 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             zoomToLocation(1.287268, 103.855933,12,topUpLocationMap);
 
             for(ERPGantry gantry : data.getErpGantries()){
-                MarkerOptions marker = new MarkerOptions()
-                        .title("ERP" + gantry.getID() + " "+gantry.getTitle())
-                        .snippet("Not in operation")
-                        .position(new LatLng(gantry.getLat(),gantry.getLng()));
-                erpLocationMap.addMarker(marker);
+                String operationStatus = "Not in operation";
+                boolean inOperation = false;
+                for(Pricing pricing : data.getPricings()){
+                    inOperation = pricing.inOperation();
+                    if(pricing.getZoneID().equals(gantry.getZone()) && pricing.inOperation()){
+                        operationStatus = "In operation till"+pricing.getEndTime();
+                        break;
+                    }
+                }
+
+                if(inOperation){
+                    MarkerOptions marker = new MarkerOptions()
+                            .title("ERP" + gantry.getID() + " "+gantry.getTitle())
+                            .snippet(operationStatus)
+                            .position(new LatLng(gantry.getLat(),gantry.getLng()))
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+                    erpLocationMap.addMarker(marker);
+                }else {
+                    MarkerOptions marker = new MarkerOptions()
+                            .title("ERP" + gantry.getID() + " " + gantry.getTitle())
+                            .snippet(operationStatus)
+                            .position(new LatLng(gantry.getLat(), gantry.getLng()));
+                    erpLocationMap.addMarker(marker);
+                }
             }
 
-//            MarkerOptions marker = new MarkerOptions()
-//                    .title("Fullerton Road Eastbound at Fullerton (63) ERP LOCATION")
-//                    .snippet("Not in operation")
-//                    .position(new LatLng(1.286033, 103.853490));
-//            erpLocationMap.addMarker(marker);
 
             MarkerOptions marker2 = new MarkerOptions()
                     .title("Fullerton Road Westbound at One Fullerton (64) TOP UP LOCATION")
