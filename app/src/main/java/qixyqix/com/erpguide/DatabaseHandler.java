@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,7 +58,7 @@ public class DatabaseHandler extends SQLiteOpenHelper{
         String CREATE_FAVOURITES_TABLE = "CREATE TABLE "+TABLE_FAVOURITES+" (" +
                 KEY_FAVOURITE_ID+" INTEGER PRIMARY KEY," +
                 KEY_TYPE+" TEXT,"+
-                KEY_ID+" TEXT )";
+                KEY_ID+" INTEGER )";
 
         db.execSQL(CREATE_FAVOURITES_TABLE);
     }
@@ -76,8 +77,8 @@ public class DatabaseHandler extends SQLiteOpenHelper{
         //Populate the values
         values.put(KEY_VEHICLE_TYPE,pricing.getVehicleType());
         values.put(KEY_DAY_TYPE,pricing.getDayType());
-        values.put(KEY_START_TIME,pricing.getStartTime());
-        values.put(KEY_END_TIME,pricing.getEndTime());
+        values.put(KEY_START_TIME,pricing.getStartTime(false));
+        values.put(KEY_END_TIME,pricing.getEndTime(false));
         values.put(KEY_ZONE_ID,pricing.getZoneID());
         values.put(KEY_CHARGE_AMT,pricing.getChargeAmount());
         //Insert
@@ -87,7 +88,7 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 
 
 
-    public void insertFavourite(String type,String favID){
+    public boolean insertFavourite(String type,int favID){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -95,8 +96,14 @@ public class DatabaseHandler extends SQLiteOpenHelper{
         values.put(KEY_TYPE,type);
         values.put(KEY_ID,favID);
 
-        db.insert(TABLE_FAVOURITES,null,values);
+        long rowsAffected = db.insert(TABLE_FAVOURITES,null,values);
         db.close();
+
+        if(rowsAffected > 0){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 
@@ -142,7 +149,7 @@ public class DatabaseHandler extends SQLiteOpenHelper{
                 pricing.setDayType(cursor.getString(2));
                 pricing.setStartTime(cursor.getString(3));
                 pricing.setEndTime(cursor.getString(4));
-                pricing.setZoneID(cursor.getColumnName(5));
+                pricing.setZoneID(cursor.getString(5));
                 pricing.setChargeAmount(Double.parseDouble(cursor.getString(6)));
 
                 pricingList.add(pricing);
@@ -151,20 +158,60 @@ public class DatabaseHandler extends SQLiteOpenHelper{
         return pricingList;
     }
 
-    public List<String> getAllFavourites(String type){
-        List<String> favouriteIDs = new ArrayList<String>();
+    public ArrayList<Pricing> getAllPricingsOfVehicle(String zoneID,String vehicleClass){
+        ArrayList<Pricing> pricingList = new ArrayList<Pricing>();
 
-        String selectString = "SELECT * FROM "+TABLE_FAVOURITES+" WHERE "+KEY_TYPE+" LIKE "+type;
+        String selectString = "SELECT * FROM "+TABLE_ERPRATES+" WHERE "+KEY_ZONE_ID+" LIKE '"+zoneID+"' " +
+                "AND "+KEY_VEHICLE_TYPE+" LIKE '"+vehicleClass+"'";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(selectString,null);
+
+        if(cursor.moveToFirst()){
+            do{
+                Pricing pricing = new Pricing();
+                pricing.setVehicleType(cursor.getString(1));
+                pricing.setDayType(cursor.getString(2));
+                pricing.setStartTime(cursor.getString(3));
+                pricing.setEndTime(cursor.getString(4));
+                pricing.setZoneID(cursor.getString(5));
+                pricing.setChargeAmount(Double.parseDouble(cursor.getString(6)));
+
+                pricingList.add(pricing);
+            }while(cursor.moveToNext());
+        }
+        return pricingList;
+    }
+
+    public ArrayList<Integer> getAllFavourites(String type){
+        ArrayList<Integer> favouriteIDs = new ArrayList<Integer>();
+
+        String selectString = "SELECT * FROM "+TABLE_FAVOURITES+" WHERE "+KEY_TYPE+" LIKE '"+type+"'";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectString,null);
 
         if(cursor.moveToFirst()){
             do{
-                favouriteIDs.add(cursor.getString(2));
+                favouriteIDs.add(cursor.getInt(2));
             }while (cursor.moveToNext());
         }
 
         return favouriteIDs;
+    }
+
+    public boolean isFavourite(String type, int id){
+        String selectString = "SELECT * FROM "+TABLE_FAVOURITES+" WHERE "+KEY_TYPE+" LIKE '"+type+
+                "' AND "+KEY_ID+" = "+id;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectString,null);
+
+        if(cursor.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     //Methods to UPDATE
@@ -184,8 +231,8 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 
         return db.update(TABLE_ERPRATES,values,where,new String[]{pricing.getVehicleType(),
         pricing.getDayType(),
-        pricing.getStartTime(),
-        pricing.getEndTime(),
+        pricing.getStartTime(false),
+        pricing.getEndTime(false),
         pricing.getZoneID()} );
     }
 
@@ -208,10 +255,24 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 
             updated += db.update(TABLE_ERPRATES, values, where, new String[]{pricing.getVehicleType(),
                     pricing.getDayType(),
-                    pricing.getStartTime(),
-                    pricing.getEndTime(),
+                    pricing.getStartTime(false),
+                    pricing.getEndTime(false),
                     pricing.getZoneID()});
         }
         return updated;
+    }
+
+    //Methods to DELETE
+    public boolean deleteFavourite(String type, int ID){
+        SQLiteDatabase db = this.getWritableDatabase();
+        int rowsAffected = db.delete(TABLE_FAVOURITES,KEY_TYPE + "= ? AND "+KEY_ID+" = ?",
+                new String[]{type,String.valueOf(ID)});
+        db.close();//Assume no more operation
+
+        if(rowsAffected > 0){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

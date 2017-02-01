@@ -52,10 +52,10 @@ public class Pricing implements Serializable{
             Calendar calendarEnd = Calendar.getInstance();
             calendarEnd.setTime(timeEnd);
 
-            SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
             Calendar calendarNow = Calendar.getInstance();
             String currentTimeString = dateFormat.format(calendarNow.getTime());
-            calendarNow.setTime(new SimpleDateFormat("HH:mm").parse(currentTimeString));
+            calendarNow.setTime(new SimpleDateFormat("HH:mm:ss").parse(currentTimeString));
             Date currentTime = calendarNow.getTime();
 
 
@@ -84,16 +84,34 @@ public class Pricing implements Serializable{
         this.dayType = dayType;
     }
 
-    public String getStartTime() {
-        return startTime;
+    public String getStartTime(boolean twelveHr) {
+        if(!twelveHr) {
+            return startTime;
+        }else{
+            try {
+                Date startTime12h = new SimpleDateFormat("HH:mm").parse(startTime);
+                return new SimpleDateFormat("hh:mm a").format(startTime12h);
+            }catch(Exception e){
+                return startTime;
+            }
+        }
     }
 
     public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public String getEndTime() {
-        return endTime;
+    public String getEndTime(boolean twelveHr) {
+        if(!twelveHr) {
+            return endTime;
+        }else{
+            try {
+                Date startTime12h = new SimpleDateFormat("HH:mm").parse(endTime);
+                return new SimpleDateFormat("hh:mm a").format(startTime12h);
+            }catch(Exception e){
+                return endTime;
+            }
+        }
     }
 
     public void setEndTime(String endTime) {

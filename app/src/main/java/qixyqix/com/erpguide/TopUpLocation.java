@@ -11,19 +11,29 @@ public class TopUpLocation implements Serializable{
     private String title;
     private String description;
     private String address;
+    private String postalCode;
     private double lat;
     private double lng;
 
     public TopUpLocation() {
     }
 
-    public TopUpLocation(int ID, String title, String description, String address, double lat, double lng) {
+    public TopUpLocation(int ID, String title, String description, String address, String postalCode,double lat, double lng) {
         this.ID = ID;
         this.title = title;
         this.description = description;
         this.address = address;
+        this.postalCode = postalCode;
         this.lat = lat;
         this.lng = lng;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
     public int getID() {

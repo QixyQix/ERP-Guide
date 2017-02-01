@@ -1,6 +1,7 @@
 package qixyqix.com.erpguide;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -52,28 +53,32 @@ public class Data {
                 }
             }
 
-            //TODO: Uncomment this when the data for top up locations is here.
-//            jsonArray = readJSONFile("TopUpLocations.json");
-//            if(jsonArray != null){
-//                for(int i = 0 ; i<jsonArray.length();i++){
-//                    JSONObject aJSONObj = jsonArray.getJSONObject(i);
-//                    topUpLocations.add(new TopUpLocation(aJSONObj.getInt("ID"),aJSONObj.getString("Title"),
-//                            aJSONObj.getString("Description"),aJSONObj.getString("Address"),
-//                            aJSONObj.getDouble("Lat"),aJSONObj.getDouble("Lng")));
-//                }
-//            }
+            jsonArray = readJSONFile("TopUpLocations.json");
+            if(jsonArray != null){
+                for(int i = 0 ; i<jsonArray.length();i++){
+                    JSONObject aJSONObj = jsonArray.getJSONObject(i);
+                    topUpLocations.add(new TopUpLocation(aJSONObj.getInt("ID"),aJSONObj.getString("Title"),
+                            aJSONObj.getString("Description"),aJSONObj.getString("Address"),
+                            aJSONObj.getString("PostalCode"), aJSONObj.getDouble("Lat"),
+                            aJSONObj.getDouble("Lng")));
+                }
+            }
         }catch(Exception e){
             e.printStackTrace();
         }
 
-        //Code to update/create pricing records in database
-        ArrayList<Pricing> pricings = GetDatamallData();
+        SharedPreferences preferences = context.getSharedPreferences("ERPGuide",Context.MODE_PRIVATE);
 
-        if(null!=pricings){
-            for(Pricing pricing : pricings){
-                if(pricing.getChargeAmount() != 0.0) {
-                    if (db.updatePricing(pricing) == 0) {
-                        db.insertPrice(pricing);
+        if(!(preferences.getBoolean("fastStart",false))) {
+            //Code to update/create pricing records in database
+            ArrayList<Pricing> pricings = GetDatamallData();
+
+            if (null != pricings) {
+                for (Pricing pricing : pricings) {
+                    if (pricing.getChargeAmount() != 0.0) {
+                        if (db.updatePricing(pricing) == 0) {
+                            db.insertPrice(pricing);
+                        }
                     }
                 }
             }
@@ -105,7 +110,11 @@ public class Data {
                 String effectiveDate = oneValue.getString("EffectiveDate");
 
                 Pricing pricing;
-
+                if(vehicleClass.contains("Passenger Cars")){
+                    pricing = new Pricing(dayType,startTime,endTime,zoneID,chargeAmount,effectiveDate);
+                    pricing.setVehicleType("Passenger Cars");
+                    datamallPricing.add(pricing);
+                }
                 if(vehicleClass.contains("Motorcycles")){
                     pricing = new Pricing(dayType,startTime,endTime,zoneID,chargeAmount,effectiveDate);
                     pricing.setVehicleType("Motorcycles");

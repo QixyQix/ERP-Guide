@@ -7,24 +7,27 @@
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView5"
+        android:id="@+id/txtPriceItemStart"
         android:layout_weight="1"
-        android:textAppearance="@android:style/TextAppearance.Material" />
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused" />
 
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView6"
+        android:id="@+id/txtPriceItemEnd"
         android:layout_weight="1"
-        android:textAppearance="@android:style/TextAppearance.Material" />
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused" />
 
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView7"
+        android:id="@+id/txtPriceItemPrice"
         android:layout_weight="1"
-        android:textAppearance="@android:style/TextAppearance.Material"
-        android:textAlignment="textEnd" />
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        android:textAlignment="textEnd"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused" />
 </LinearLayout>

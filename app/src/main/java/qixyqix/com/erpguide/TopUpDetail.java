@@ -3,7 +3,10 @@ package qixyqix.com.erpguide;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -16,19 +19,26 @@ import com.google.android.gms.vision.text.Text;
 
 public class TopUpDetail extends AppCompatActivity {
 
-    GoogleMap topUpMap;
-    double lat;
-    double lng;
+    private GoogleMap topUpMap;
+    private DatabaseHandler db;
+    private boolean favourite;
+    private int ID;
+    private double lat;
+    private double lng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top_up_detail);
 
+        db = new DatabaseHandler(this);
+
         //Get the topUp location details
         Intent usedIntent = getIntent();
         //Get all the data from the bundle
-        final TopUpLocation topUpLocation = (TopUpLocation) usedIntent.getExtras().getSerializable("location");
+        TopUpLocation topUpLocation = (TopUpLocation) usedIntent.getExtras().getSerializable("location");
+        ID = topUpLocation.getID();
+        favourite = db.isFavourite("TopUp",ID);
 
         //Get the widget references
         TextView txtTitle = (TextView) findViewById(R.id.txtTopUpTitle);
@@ -58,5 +68,53 @@ public class TopUpDetail extends AppCompatActivity {
                 topUpMap.addMarker(marker);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.detail_menu,menu);
+        MenuItem favouriteItem = (MenuItem) menu.findItem(R.id.menuItemFavourite);
+        if(favourite){
+            favouriteItem.setIcon(R.drawable.ic_star_white_24dp);
+            favouriteItem.setTitle("Remove from favorites");
+        }else{
+            favouriteItem.setTitle("Add to favorites");
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemSelected = item.getItemId();
+        switch (itemSelected){
+            case R.id.menuItemFavourite:
+                if(favourite){
+                    //if it is a favourite, remove from db
+                    if(db.deleteFavourite("TopUp",ID)){
+                        item.setIcon(R.drawable.ic_star_border_white_24dp);
+                        item.setTitle("Add to favorites");
+                        favourite = false;
+                        Toast.makeText(this,"Successfully removed from favorites",Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(this,"Error removing from favorites",Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    //else make it a favorite
+                    if(db.insertFavourite("TopUp",ID)){
+                        item.setIcon(R.drawable.ic_star_white_24dp);
+                        item.setTitle("Remove from favorites");
+                        favourite = true;
+                        Toast.makeText(this,"Successfully added to favorites",Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(this,"Error adding to favorites",Toast.LENGTH_SHORT).show();
+                    }
+                }
+                break;
+            case R.id.menuItemSettings:
+                Intent intent = new Intent(this,Settings.class);
+                startActivity(intent);
+                break;
+        }
+        return true;
     }
 }

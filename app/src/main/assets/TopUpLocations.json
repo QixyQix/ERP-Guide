@@ -1,0 +1,218 @@
+[
+ {
+   "Title": "313@SOMERSET",
+   "ID": 501,
+   "Address": "BLK 313 ORCHARD ROAD #06-00 & #07-00 313 @ SOMERSET SINGAPORE (238895)",
+   "Description": "LVL 6 LIFT LOBBY A",
+   "PostalCode": "238895",
+   "Lat": 1.300667,
+   "Lng": 103.838252
+ },
+ {
+   "Title": "313@SOMERSET",
+   "ID": 502,
+   "Address": "BLK 313 ORCHARD ROAD #06-00 & #07-00 313 @ SOMERSET SINGAPORE (238895)",
+   "Description": "NEAR LOADING/UNLOADING BAY",
+   "PostalCode": "238895",
+   "Lat": 1.300667,
+   "Lng": 103.838252
+ },
+ {
+   "Title": "ANGUILLA PARK",
+   "ID": 503,
+   "Address": "BLK 24 ANGULLIA PARK SINGAPORE (239976)",
+   "Description": "OPEN SPACE CARPARK NEAR WHEELOCK PLACE",
+   "PostalCode": "239976",
+   "Lat": 1.302864,
+   "Lng": 103.829114
+ },
+ {
+   "Title": "BALESTIER POINT",
+   "ID": 504,
+   "Address": "BLK 279 BALESTIER ROAD BALESTIER POINT SINGAPORE (329727)",
+   "Description": "LVL 1 SECURITY COUNTER",
+   "PostalCode": "329727",
+   "Lat": 1.322808,
+   "Lng": 103.852299
+ },
+ {
+   "Title": "BOON KENG VILLE",
+   "ID": 505,
+   "Address": "BLK 11 UPPER BOON KENG ROAD BOON KENG VILLE SINGAPORE (380011)",
+   "Description": "NEAR EXIT GANTRY",
+   "PostalCode": "380011",
+   "Lat": 1.314342,
+   "Lng": 103.871085
+ },
+ {
+   "Title": "BRADDELL TECH",
+   "ID": 506,
+   "Address": "BLK 13 LORONG 8 TOA PAYOH TP3 BRADDELL TECH SINGAPORE (319261)",
+   "Description": "AT ENTRY/EXIT GANTRY",
+   "PostalCode": "319261",
+   "Lat": 1.340539,
+   "Lng": 103.857764
+ },
+ {
+   "Title": "BRAS BASAH COMPLEX",
+   "ID": 507,
+   "Address": "BLK 231 BAIN STREET BRAS BASAH COMPLEX SINGAPORE (180231)",
+   "Description": "B1 NEAR ENTRY/EXIT GANTRY",
+   "PostalCode": "180231",
+   "Lat": 1.297089,
+   "Lng": 103.853727
+ },
+ {
+   "Title": "BUGIS JUNCTION",
+   "ID": 508,
+   "Address": "230 VICTORIA STREET BASEMENT 2 BUGIS JUNCTION SINGAPORE (188024)",
+   "Description": "B2 CARPARK HOTEL LOBBY YELLOW ZONE",
+   "PostalCode": "188024",
+   "Lat": 1.299585,
+   "Lng": 103.855217
+ },
+ {
+   "Title": "BURLINGTON SQUARE",
+   "ID": 509,
+   "Address": "BLK 175 BENCOOLEN STREET BURLINGTON SQUARE SINGAPORE (189649)",
+   "Description": "LVL 1 OFFICE TOWER LIFT LOBBY OPP #01-20",
+   "PostalCode": "189649",
+   "Lat": 1.302201,
+   "Lng": 103.852459
+ },
+ {
+   "Title": "CAPITOL SINGAPORE",
+   "ID": 510,
+   "Address": "BLK 13 STAMFORD ROAD CAPITOL PIAZZA SINGAPORE (178905)",
+   "Description": "B3 CARPARK",
+   "PostalCode": "178905",
+   "Lat": 1.293094,
+   "Lng": 103.851455
+ },
+ {
+   "Title": "CAPITOL SINGAPORE",
+   "ID": 511,
+   "Address": "BLK 13 STAMFORD ROAD CAPITOL PIAZZA SINGAPORE (178905)",
+   "Description": "B5 CARPARK",
+   "PostalCode": "178905",
+   "Lat": 1.293094,
+   "Lng": 103.851455
+ },
+ {
+   "Title": "CAPITOL SINGAPORE",
+   "ID": 512,
+   "Address": "BLK 13 STAMFORD ROAD CAPITOL PIAZZA SINGAPORE (178905)",
+   "Description": "B6 CARPARK",
+   "PostalCode": "178905",
+   "Lat": 1.293094,
+   "Lng": 103.851455
+ },
+ {
+   "Title": "18@TRADEHUB21",
+   "ID": 401,
+   "Address": "BLK 18 BOON LAY WAY #01-143 TRADEHUB 21 SINGAPORE (609966)",
+   "Description": "",
+   "PostalCode": "609966",
+   "Lat": 1.328245,
+   "Lng": 103.753436
+ },
+ {
+   "Title": "ANCHORPOINT SHOPPING CENTRE",
+   "ID": 402,
+   "Address": "BLK 370 ALEXANDRA ROAD ANCHORPOINT SHOPPING CENTRE SINGAPORE (159953)",
+   "Description": "CP BOOTH NEAR ENTRY/EXIT",
+   "PostalCode": "159953",
+   "Lat": 1.289056,
+   "Lng": 103.805496
+ },
+ {
+   "Title": "AYER RAJAH CRESCENT",
+   "ID": 403,
+   "Address": "BLK 20 AYER RAJAH CRESCENT SINGAPORE (139964)",
+   "Description": "JTC BOOTH NEAR ENTRY/EXIT GANTRY",
+   "PostalCode": "139964",
+   "Lat": 1.295453,
+   "Lng": 103.789732
+ },
+ {
+   "Title": "BIOPOLIS HELIOS",
+   "ID": 404,
+   "Address": "BLK 11 BIOPOLIS WAY HELIOS SINGAPORE (138667)",
+   "Description": "B3 RED ZONE PASSENGER LIFT 6 LOBBY",
+   "PostalCode": "138667",
+   "Lat": 1.304781,
+   "Lng": 103.791661
+ },
+ {
+   "Title": "BIOPOLIS HELIOS",
+   "ID": 405,
+   "Address": "BLK 11 BIOPOLIS WAY HELIOS SINGAPORE (138667)",
+   "Description": "B2 LIGHT BLUE ZONE CARGO LIFT LOBBY",
+   "PostalCode": "138667",
+   "Lat": 1.304781,
+   "Lng": 103.791661
+ },
+ {
+   "Title": "BOON LAY PLACE",
+   "ID": 406,
+   "Address": "BLK 212A BOON LAY PLACE BL19 MULTI STOREY CAR PARK SINGAPORE (641212)",
+   "Description": "BLK 221A BOOTH OUTSIDE MSCP",
+   "PostalCode": "641212",
+   "Lat": 1.348884,
+   "Lng": 103.713464
+ },
+ {
+   "Title": "BUKIT BATOK WEST AVENUE 8",
+   "ID": 407,
+   "Address": "BLK 178 BUKIT BATOK WEST AVENUE 8 SINGAPORE (650178)",
+   "Description": "AT ENTRY/EXIT GANTRY",
+   "PostalCode": "650178",
+   "Lat": 1.346005,
+   "Lng": 103.742667
+ },
+ {
+   "Title": "BUKIT BATOK WEST AVENUE 8",
+   "ID": 408,
+   "Address": "BLK 154A BUKIT BATOK WEST AVENUE 8 SINGAPORE (651154)",
+   "Description": "AT BLK 152 ENTRY/EXIT GANTRY",
+   "PostalCode": "651154",
+   "Lat": 1.347324,
+   "Lng": 103.743587
+ },
+ {
+   "Title": "BUKIT PANJANG NEW TOWN",
+   "ID": 409,
+   "Address": "BLK 259A BANGKIT ROAD BJ16 BUKIT PANJANG NEW TOWN SINGAPORE (670259)",
+   "Description": "AT MSCP EXIT/ENTRY GANTRY",
+   "PostalCode": "670259",
+   "Lat": 1.376938,
+   "Lng": 103.773539
+ },
+ {
+   "Title": "BUKIT PANJANG PLAZA",
+   "ID": 410,
+   "Address": "BLK 1 JELEBU ROAD #B1-01 BUKIT PANJANG PLAZA SINGAPORE (677743)",
+   "Description": "B1 ELEVATOR CAR PARK ENT",
+   "PostalCode": "677743",
+   "Lat": 1.379879,
+   "Lng": 103.764215
+ },
+ {
+   "Title": "BUKIT PANJANG PLAZA",
+   "ID": 411,
+   "Address": "BLK 1 JELEBU ROAD #B1-01 BUKIT PANJANG PLAZA SINGAPORE (677743)",
+   "Description": "B2 ELEVATOR CAR PARK ENT",
+   "PostalCode": "677743",
+   "Lat": 1.379879,
+   "Lng": 103.764215
+ },
+ {
+   "Title": "BUKIT PANJANG RING ROAD",
+   "ID": 412,
+   "Address": "BLK 537A BUKIT PANJANG RING ROAD MULTI STOREY CAR PARK SINGAPORE (671537)",
+   "Description": "CARPARK BOOTH NEAR ENTRY/EXIT GANTRY",
+   "PostalCode": "671537",
+   "Lat": 1.383441,
+   "Lng": 103.762921
+ }
+]

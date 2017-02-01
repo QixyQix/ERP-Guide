@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">ERP Guide</string>
     <string name="title_activity_maps">Map</string>
+    <string name="description_12h_time">Turning this on sets the application to display all timings in 12h format</string>
+    <string name="description_save_data">Turning this on skips downloading of the ERP Rates from LTA Datamall upon application startup</string>
 </resources>

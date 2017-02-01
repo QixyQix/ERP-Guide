@@ -61,11 +61,12 @@
                         <ListView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:id="@+id/listCar" />
+                            android:id="@+id/listCar"
+                            android:background="@color/cast_expanded_controller_progress_text_color" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/tabBus"
+                        android:id="@+id/tabMotorcycle"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
@@ -73,7 +74,21 @@
                         <ListView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:id="@+id/listBus" />
+                            android:id="@+id/listMotorcycle"
+                            android:background="@color/cast_expanded_controller_progress_text_color" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tabTaxi"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ListView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/listTaxi"
+                            android:background="@color/cast_expanded_controller_progress_text_color" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -85,7 +100,21 @@
                         <ListView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:id="@+id/listHeavy" />
+                            android:id="@+id/listHeavy"
+                            android:background="@color/cast_expanded_controller_progress_text_color" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tabVeryHeavy"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ListView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/listVeryHeavy"
+                            android:background="@color/cast_expanded_controller_progress_text_color" />
                     </LinearLayout>
                 </FrameLayout>
             </LinearLayout>
