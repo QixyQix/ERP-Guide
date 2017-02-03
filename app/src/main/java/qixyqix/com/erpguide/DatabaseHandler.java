@@ -161,8 +161,8 @@ public class DatabaseHandler extends SQLiteOpenHelper{
     public ArrayList<Pricing> getAllPricingsOfVehicle(String zoneID,String vehicleClass){
         ArrayList<Pricing> pricingList = new ArrayList<Pricing>();
 
-        String selectString = "SELECT * FROM "+TABLE_ERPRATES+" WHERE "+KEY_ZONE_ID+" LIKE '"+zoneID+"' " +
-                "AND "+KEY_VEHICLE_TYPE+" LIKE '"+vehicleClass+"'";
+        String selectString = "SELECT * FROM "+TABLE_ERPRATES+" WHERE "+KEY_ZONE_ID+" = '"+zoneID+"' " +
+                "AND "+KEY_VEHICLE_TYPE+" = '"+vehicleClass+"'";
 
         SQLiteDatabase db = this.getReadableDatabase();
 

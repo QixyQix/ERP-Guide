@@ -31,6 +31,7 @@ public class ERPDetail extends AppCompatActivity {
     private ArrayList<Pricing> pricings;
     private String operationStatus;
     private boolean favourite;
+    private ERPGantry gantry;
     private int erpID;
     private boolean twelveHr;
 
@@ -48,7 +49,7 @@ public class ERPDetail extends AppCompatActivity {
         TextView erpStatus = (TextView) findViewById(R.id.txtERPStatus);
 
         Intent usedIntent = this.getIntent();
-        ERPGantry gantry = (ERPGantry) usedIntent.getExtras().getSerializable("gantry");
+        gantry = (ERPGantry) usedIntent.getExtras().getSerializable("gantry");
 
         favourite = db.isFavourite("ERP",gantry.getID());
         erpID = gantry.getID();
@@ -59,21 +60,13 @@ public class ERPDetail extends AppCompatActivity {
 
         setupTabHost();
 
-        ListView carList = (ListView) findViewById(R.id.listCar);
-        carList.setAdapter(getAdapter(this,gantry.getZone(),"Passenger Cars"));
+        getTimings();
+    }
 
-        ListView motorCycleList = (ListView) findViewById(R.id.listMotorcycle);
-        motorCycleList.setAdapter(getAdapter(this,gantry.getZone(),"Motorcycles"));
-
-        ListView taxiList = (ListView) findViewById(R.id.listTaxi);
-        taxiList.setAdapter(getAdapter(this,gantry.getZone(),"Taxis"));
-
-        ListView heavyVehicle = (ListView) findViewById(R.id.listHeavy);
-        taxiList.setAdapter(getAdapter(this,gantry.getZone(),"Heavy Goods Vehicles"));
-
-        ListView veryHeavyVehicle = (ListView) findViewById(R.id.listVeryHeavy);
-        veryHeavyVehicle.setAdapter(getAdapter(this,gantry.getZone(),"Very Heavy Goods Vehicles"));
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getTimings();
     }
 
     @Override
@@ -171,6 +164,23 @@ public class ERPDetail extends AppCompatActivity {
         spec.setContent(R.id.tabVeryHeavy);
         spec.setIndicator("Very Heavy Veh");
         tabHost.addTab(spec);
+    }
+
+    public void getTimings(){
+        ListView carList = (ListView) findViewById(R.id.listCar);
+        carList.setAdapter(getAdapter(this,gantry.getZone(),"Passenger Cars"));
+
+        ListView motorCycleList = (ListView) findViewById(R.id.listMotorcycle);
+        motorCycleList.setAdapter(getAdapter(this,gantry.getZone(),"Motorcycles"));
+
+        ListView taxiList = (ListView) findViewById(R.id.listTaxi);
+        taxiList.setAdapter(getAdapter(this,gantry.getZone(),"Taxis"));
+
+        ListView heavyVehicle = (ListView) findViewById(R.id.listHeavy);
+        heavyVehicle.setAdapter(getAdapter(this,gantry.getZone(),"Heavy Goods Vehicles"));
+
+        ListView veryHeavyVehicle = (ListView) findViewById(R.id.listVeryHeavy);
+        veryHeavyVehicle.setAdapter(getAdapter(this,gantry.getZone(),"Very Heavy Goods Vehicles"));
     }
 
     public TimingAdapter getAdapter(Context context,String zone,String vehicleClass){

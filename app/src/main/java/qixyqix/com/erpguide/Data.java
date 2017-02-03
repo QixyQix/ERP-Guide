@@ -127,7 +127,7 @@ public class Data {
                 }
                 if(vehicleClass.contains("Heavy Goods Vehicles")){
                     pricing = new Pricing(dayType,startTime,endTime,zoneID,chargeAmount,effectiveDate);
-                    pricing.setVehicleType("Light Goods Vehicles");
+                    pricing.setVehicleType("Heavy Goods Vehicles");
                     datamallPricing.add(pricing);
                 }
                 if(vehicleClass.contains("Very Heavy Goods Vehicles")){
