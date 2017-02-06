@@ -7,6 +7,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,6 +43,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     AutoCompleteTextView txtSearch2;
     HashMap erpHash;
     HashMap topupHash;
+    Button btnSearch;
+    Button btnSearch2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +75,49 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         setupAutoCompleteSearch();
         erpHash = new HashMap();
         topupHash = new HashMap();
+        btnSearch = (Button) findViewById(R.id.btnSearch);
+        btnSearch2 = (Button) findViewById(R.id.btnSearch2);
+        txtSearch.setImeActionLabel("Search",KeyEvent.KEYCODE_ENTER);
+        txtSearch2.setImeActionLabel("Search",KeyEvent.KEYCODE_ENTER);
+        txtSearch.setOnKeyListener(new View.OnKeyListener(){
+
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if(event.getAction() == KeyEvent.ACTION_DOWN){
+                    switch(keyCode){
+                        //case KeyEvent.KEYCODE_DPAD_CENTER:
+                        case KeyEvent.KEYCODE_NAVIGATE_NEXT:
+                        case KeyEvent.KEYCODE_ENTER:
+                            btnSearch.performClick();
+                            return true;
+                        default:
+                            break;
+                    }
+                }
+                return false;
+            }
+        });
+
+        txtSearch2.setOnKeyListener(new View.OnKeyListener(){
+
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if(event.getAction() == KeyEvent.ACTION_DOWN){
+                    switch(keyCode){
+                        //case KeyEvent.KEYCODE_DPAD_CENTER:
+                        case KeyEvent.KEYCODE_NAVIGATE_NEXT:
+                        case KeyEvent.KEYCODE_ENTER:
+                            btnSearch2.performClick();
+                            return true;
+                        default:
+                            break;
+                    }
+                }
+                return false;
+            }
+        });
     }
 
     public void setupAutoCompleteSearch(){
