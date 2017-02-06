@@ -3,4 +3,13 @@
     <string name="title_activity_maps">Map</string>
     <string name="description_12h_time">Turning this on sets the application to display all timings in 12h format</string>
     <string name="description_save_data">Turning this on skips downloading of the ERP Rates from LTA Datamall upon application startup</string>
+    <string name="aboutDesc">ERPGuide is a mobile app developed by a team of SP Students that aim to inform and help motorists save money by providing the information that allows them to be aware of the ERP rates and timings of operation.\n\n
+    Devloper team:\n
+    Cho Qi Xiang (P1530078)\n
+    Kish Choy Wai Kit (P1530403)\n
+    Jas Pang (P1424427)\n\n
+    ERP Rate data provided by LTA Datamall\n\n
+    How to use:\n
+    Tap on the markers to view more information about the ERP/TopUp Location. Green markers mean the ERP is in operation, red markers mean that it is not in operation.\n\n
+    To add to favourites, use the menu icon (three dots) at the top right corner of the ERP detail/top up location detail.</string>
 </resources>

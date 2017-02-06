@@ -42,7 +42,8 @@
         <activity android:name=".TopUpDetail" />
         <activity android:name=".Favourites" />
         <activity android:name=".DirectMeThere" />
-        <activity android:name=".Settings"></activity>
+        <activity android:name=".Settings" />
+        <activity android:name=".About"></activity>
     </application>
 
 </manifest>

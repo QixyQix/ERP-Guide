@@ -225,6 +225,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 Intent intent = new Intent(this,Settings.class);
                 startActivity(intent);
                 break;
+            case  R.id.menuItemMainAbout:
+                Intent intent1 = new Intent(this,About.class);
+                startActivity(intent1);
+                break;
         }
         return true;
     }
