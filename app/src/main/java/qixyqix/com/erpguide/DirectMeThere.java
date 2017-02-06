@@ -32,5 +32,5 @@ public class DirectMeThere extends AppCompatActivity {
 
 
     }
-    
+
 }

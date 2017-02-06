@@ -68,15 +68,15 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             app:srcCompat="@android:drawable/ic_dialog_map"
-            android:id="@+id/imageButton3"
+            android:id="@+id/imgBtnFavMap"
             android:layout_weight="1"
             android:background="@color/colorPrimaryDark" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            app:srcCompat="@android:drawable/btn_star"
-            android:id="@+id/imageButton4"
+            app:srcCompat="@drawable/ic_star_white_24dp"
+            android:id="@+id/imgBtnFavFav"
             android:layout_weight="1"
             android:background="@color/colorPrimaryDark" />
 

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TabHost;
@@ -103,6 +104,18 @@ public class Favourites extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),TopUpDetail.class);
                 Bundle b = new Bundle();
                 b.putSerializable("location",location);
+                intent.putExtras(b);
+                startActivity(intent);
+            }
+        });
+
+        ImageButton btnMap = (ImageButton) findViewById(R.id.imgBtnFavMap);
+        btnMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                Bundle b = new Bundle();
+                b.putSerializable("data",data);
                 intent.putExtras(b);
                 startActivity(intent);
             }
