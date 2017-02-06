@@ -6,9 +6,12 @@ import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -28,12 +31,17 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap erpLocationMap;
     private GoogleMap topUpLocationMap;
     private DataBundle data;
+    AutoCompleteTextView txtSearch;
+    AutoCompleteTextView txtSearch2;
+    HashMap erpHash;
+    HashMap topupHash;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +68,30 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         tabHost.addTab(spec);
 
         initializeMap();
+
+        setupAutoCompleteSearch();
+        erpHash = new HashMap();
+        topupHash = new HashMap();
+    }
+
+    public void setupAutoCompleteSearch(){
+        //setup erp location autocomplete search
+        txtSearch = (AutoCompleteTextView) findViewById(R.id.txtSearch);
+        ArrayList<String> gantryNames = new ArrayList<String>();
+        for(ERPGantry gantry : data.getErpGantries()){
+            gantryNames.add("ERP" + gantry.getID() + " "+gantry.getTitle());
+        }
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,gantryNames);
+        txtSearch.setAdapter(arrayAdapter);
+
+        //setup topup location autocomplete search
+        txtSearch2 = (AutoCompleteTextView) findViewById(R.id.txtSearch2);
+        ArrayList<String> topupNames = new ArrayList<String>();
+        for(TopUpLocation topUpLocation : data.getTopUpLocations()){
+            topupNames.add(topUpLocation.getID()+" "+topUpLocation.getTitle());
+        }
+        ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,topupNames);
+        txtSearch2.setAdapter(arrayAdapter2);
     }
 
     @Override
@@ -161,6 +193,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void populateMarkers(){
         SharedPreferences preferences = getSharedPreferences("ERPGuide",MODE_PRIVATE);
         boolean twelveHr = preferences.getBoolean("tweleveHr",false);
+        Marker m;
 
         if(null != erpLocationMap && null != topUpLocationMap) {
             //Clear existing markers
@@ -188,13 +221,15 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                             .snippet(operationStatus)
                             .position(new LatLng(gantry.getLat(),gantry.getLng()))
                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-                    erpLocationMap.addMarker(marker);
+                    m = erpLocationMap.addMarker(marker);
+                    erpHash.put(marker.getTitle(), m);
                 }else {
                     MarkerOptions marker = new MarkerOptions()
                             .title("ERP" + gantry.getID() + " " + gantry.getTitle())
                             .snippet(operationStatus)
                             .position(new LatLng(gantry.getLat(), gantry.getLng()));
-                    erpLocationMap.addMarker(marker);
+                    m = erpLocationMap.addMarker(marker);
+                    erpHash.put(marker.getTitle(), m);
                 }
             }
 
@@ -204,7 +239,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         .title(location.getID()+" "+location.getTitle())
                         .snippet(location.getAddress())
                         .position(new LatLng(location.getLat(),location.getLng()));
-                topUpLocationMap.addMarker(marker);
+                m = topUpLocationMap.addMarker(marker);
+                topupHash.put(marker.getTitle(), m);
             }
         }
     }
@@ -249,4 +285,38 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 break;
         }
     }
+
+    public void onClick(View view){
+        switch(view.getId()){
+            case R.id.btnSearch:
+                try {
+                    String searchedLocation = txtSearch.getText().toString();
+                    if (searchedLocation != null || !searchedLocation.equals("")) {
+                        Marker m = (Marker) erpHash.get(searchedLocation);
+                        m.showInfoWindow();
+                        erpLocationMap.animateCamera(CameraUpdateFactory.newLatLngZoom(m.getPosition(), 13));
+                        //erpLocationMap.animateCamera(CameraUpdateFactory.newLatLng(m.getPosition()));
+                    }
+                }catch(Exception e){
+                    //Log.d("Exception e", String.valueOf(e) );
+                    Toast.makeText(this, "Please select a proper location to search", Toast.LENGTH_LONG).show();
+                }
+                break;
+            case R.id.btnSearch2:
+                try {
+                    String searchedLocation = txtSearch2.getText().toString();
+                    if (searchedLocation != null || !searchedLocation.equals("")) {
+                        Marker m = (Marker) topupHash.get(searchedLocation);
+                        m.showInfoWindow();
+                        topUpLocationMap.animateCamera(CameraUpdateFactory.newLatLngZoom(m.getPosition(), 13));
+                        //erpLocationMap.animateCamera(CameraUpdateFactory.newLatLng(m.getPosition()));
+                    }
+                }catch(Exception e){
+                    //Log.d("Exception e", String.valueOf(e) );
+                    Toast.makeText(this, "Please select a proper location to search", Toast.LENGTH_LONG).show();
+                }
+                break;
+        }
+    }
+
 }
