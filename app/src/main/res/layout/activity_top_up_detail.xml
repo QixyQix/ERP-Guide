@@ -46,10 +46,10 @@
             android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
         <Button
-            android:text="Direct Me There"
+            android:text="Direct Me There (Using Google Maps)"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnDirect" />
+            android:id="@+id/btnDirections" />
 
     </LinearLayout>
 

@@ -10,4 +10,26 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="qixyqix.com.erpguide.DirectMeThere">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <fragment
+            android:layout_width="match_parent"
+            android:name="com.google.android.gms.maps.MapFragment"
+            android:layout_alignParentStart="true"
+            android:id="@+id/fragmentDirection"
+            android:layout_alignParentTop="true"
+            android:layout_height="350dp" />
+
+        <Switch
+            android:text="Switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fragmentDirection"
+            android:layout_alignParentStart="true"
+            android:id="@+id/switchAvoid" />
+    </LinearLayout>
+
 </RelativeLayout>

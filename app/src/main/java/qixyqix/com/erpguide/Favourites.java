@@ -10,6 +10,7 @@ import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -72,10 +73,40 @@ public class Favourites extends AppCompatActivity {
         tabHost.addTab(spec);
 
         ListView listFavGantries = (ListView) findViewById(R.id.listERPFav);
-        listFavGantries.setAdapter(new GantryAdapter(this,favGantries));
+        final GantryAdapter gantryAdapter = new GantryAdapter(this,favGantries);
+        listFavGantries.setAdapter(gantryAdapter);
 
         ListView listFavTopUp = (ListView) findViewById(R.id.listTopUpFav);
-        listFavTopUp.setAdapter(new TopUpAdapter(this,favTopUp));
+        final TopUpAdapter topUpAdapter = new TopUpAdapter(this,favTopUp);
+        listFavTopUp.setAdapter(topUpAdapter);
+
+        listFavGantries.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //Retrieve the gantry object
+                ERPGantry gantry = gantryAdapter.getItem(position);
+                //Start the gantry activity
+                Intent intent = new Intent(getApplicationContext(),ERPDetail.class);
+                Bundle b = new Bundle();
+                b.putSerializable("gantry",gantry);
+                intent.putExtras(b);
+                startActivity(intent);
+            }
+        });
+
+        listFavTopUp.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //Retrieve the topup location object
+                TopUpLocation location = topUpAdapter.getItem(position);
+                //start the location activity
+                Intent intent = new Intent(getApplicationContext(),TopUpDetail.class);
+                Bundle b = new Bundle();
+                b.putSerializable("location",location);
+                intent.putExtras(b);
+                startActivity(intent);
+            }
+        });
 
     }
 
